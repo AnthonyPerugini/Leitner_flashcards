@@ -2,6 +2,8 @@ Ok what is the Lietner system and how does it improove memorization skills?
 
 1. create a deck of flashcards (array of question/answer linked)
 2. create 3 boxes (variable number of boxes?)
+	variable num of Boxes only at 'question set' creation.  Once a set is created, cannot add more questions with different/more/less boxes easily.  Would need a way to convert the old boxes into the new boxes.
+
 3. start each card in Box 1
 
 4. Each box carries with it a time-weight value, which determines the frequency of times a card will be shown to the user.
