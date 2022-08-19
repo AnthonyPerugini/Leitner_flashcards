@@ -7,13 +7,21 @@ from datetime import datetime, timedelta
 
 class Agent:
     
-    def __init__(self, filepath, boxes=None):
+    def __init__(self, filepath=None, boxes=None):
         
         self.filepath = filepath
         self.boxes = boxes if boxes is not None else []
+
+
+    def set_filepath(self, filepath):
+        self.filepath = filepath
+
+
         
         
     def read_in_boxes_from_file(self):
+
+        assert self.filepath, 'No filepath attached to Agent!'
         
         with open(os.path.join(os.getcwd(), self.filepath), 'r') as f:
             boxes_dicts = json.loads(f.read())['boxes']
@@ -51,6 +59,8 @@ class Agent:
 
     
     def save_boxes_to_file(self):
+
+        assert self.filepath, 'No filepath attached to Agent!'
         
         if os.path.exists(t := os.path.join(os.getcwd(), self.filepath)):
             x = input(f'Are you sure you would like to overwrite file {t}? -press- "Y/y" for Yes or Any key to Quit: ')
@@ -76,7 +86,6 @@ class Box:
 
         if not isinstance(self.freq, timedelta):
             raise TypeError('frequency value must be a timedelta object, int, or float. {self.freq=} is {type(self.freq)=}')
-
         
 @dataclass
 class Flashcard:
